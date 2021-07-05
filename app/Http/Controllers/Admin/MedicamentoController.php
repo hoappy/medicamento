@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Carga;
 use App\Models\Medicamento;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class MedicamentoController extends Controller
@@ -46,11 +48,21 @@ class MedicamentoController extends Controller
             'descripcion_medicamento' => ['required', 'string', 'max:255'],
         ]);
 
-        Medicamento::create([
+        $medicamento = Medicamento::create([
             'nombre_medicamento' =>$request->nombre_medicamento,
             'descripcion_medicamento' => $request->descripcion_medicamento,
             
         ]);
+
+
+        $user = auth()->user();
+
+        $carga = Carga::create([
+            'user_id' =>$user->id,
+            'medicamento_id' => $medicamento->id,
+            'fecha_carga' => Carbon::now(),
+        ]);
+
         return redirect()->route('admin.medicamentos.index'/*, $automovils*/)->with('info', 'El medicamento se creo correctamente');
     }
 

@@ -2,18 +2,20 @@
 
 namespace Database\Factories;
 
+use App\Models\Carga;
 use App\Models\Medicamento;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
-class MedicamentoFactory extends Factory
+class CargaFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Medicamento::class;
+    protected $model = Carga::class;
 
     /**
      * Define the model's default state.
@@ -22,11 +24,10 @@ class MedicamentoFactory extends Factory
      */
     public function definition()
     {
-
         return [
-            'nombre_medicamento' => $this->faker->unique()->word(50),
-            'descripcion_medicamento' => $this->faker->word(50),
-            'estado' => $this->faker->randomElement(['0','1']),
+            'user_id' => User::all()->random()->id,
+            'medicamento_id' => Medicamento::all()->random()->id,
+            'fecha_carga' => Carbon::now(),
         ];
     }
 }

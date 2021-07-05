@@ -61,7 +61,7 @@
 
                 </div>
 
-                {!! Form::submit('Agregar Usuario', ['class' => 'btn btn-primary']) !!}
+                {!! Form::submit('Editar Usuario', ['class' => 'btn btn-primary']) !!}
 
             {!! Form::close() !!}
 

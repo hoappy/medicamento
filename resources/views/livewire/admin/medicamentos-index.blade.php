@@ -11,6 +11,8 @@
                             
                             <th scope="col">Nombre Medicamento</th>
                             <th scope="col">Descripcion Medicamento</th>
+                            <th scope="col">Agregado el:</th>
+                            <th scope="col">Por el Usuario:</th>
                             
                         </tr>
                         </thead>
@@ -19,6 +21,8 @@
                         <tr>
                             <td>{{$medicamento->nombre_medicamento}}</td>
                             <td>{{$medicamento->descripcion_medicamento}}</td>
+                            <td>{{$medicamento->fecha_carga}}</td>
+                            <td>{{$medicamento->name}}</td>
                             
                             <td width="10px">
                                 <a class="btn btn-success btn-sm" href="{{route('admin.medicamentos.edit', $medicamento)}}">Editar</a>

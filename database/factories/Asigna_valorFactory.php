@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\Asigna_valor;
 use App\Models\Medicamento;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class Asigna_valorFactory extends Factory
@@ -27,7 +28,7 @@ class Asigna_valorFactory extends Factory
             'user_id' => User::all()->random()->id,
             'medicamento_id' => Medicamento::all()->random()->id,
             'valor' => $this->faker->randomNumber(),
-            'fecha_asigna' => $this->faker->date(),
+            'fecha_asigna' => Carbon::now(),
             'cantidad' => $this->faker->randomNumber(),
         ];
     }

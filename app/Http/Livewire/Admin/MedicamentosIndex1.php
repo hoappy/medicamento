@@ -21,8 +21,13 @@ class MedicamentosIndex1 extends Component
 
     public function render()
     {
-        $medicamentos = Medicamento::where('nombre_medicamento', 'LIKE', '%' . $this->search . '%')
-        ->Where('estado', '=', '0')
+        $medicamentos = Medicamento::join('cargas', 'medicamentos.id', '=' , 'cargas.medicamento_id')
+        ->join('users', 'users.id', '=' , 'cargas.user_id')
+        ->Where('medicamentos.estado', '=', '0')
+
+        ->where('medicamentos.nombre_medicamento', 'LIKE', '%' . $this->search . '%')
+        
+        ->select('medicamentos.id as id', 'medicamentos.nombre_medicamento as nombre_medicamento','medicamentos.descripcion_medicamento as descripcion_medicamento', 'users.name as name', 'cargas.fecha_carga as fecha_carga')
         ->paginate(10);
 
         return view('livewire.admin.medicamentos-index1', compact('medicamentos'));

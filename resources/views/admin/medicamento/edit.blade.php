@@ -32,7 +32,7 @@
                     @enderror
 
                 </div>
-                {!! Form::submit('Agregar Usuario', ['class' => 'btn btn-primary']) !!}
+                {!! Form::submit('Editar Medicamento', ['class' => 'btn btn-primary']) !!}
 
             {!! Form::close() !!}
 
