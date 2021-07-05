@@ -148,7 +148,6 @@ class UserController extends Controller
         
         $user->update($request->all());
         
-
         return redirect()->route('admin.users.index'/*, $automovils*/)->with('info', 'El usuario se creo correctamente');
     }
 
@@ -158,9 +157,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+
+        return redirect()->route('admin.users.index'/*, $automovils*/)->with('info', 'El usuario elimino correctamente');
     }
     public function roleasig(User $user)
     {

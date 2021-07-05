@@ -47,13 +47,13 @@
                                 <a class="btn btn-success btn-sm" href="{{route('admin.users.edit', $user)}}">Editar</a>
                             </td>
                         
-                            <td width="10px">
+                            <!-- <td width="10px">
                                 <form href="{{route('admin.users.destroy', $user)}}" method="POST">
                                     @csrf
-                                    @method('delete')
+                                    {{method_field('delete')}}
                                     <button tupe="submit" class="btn btn-danger btn-sm" >Eliminar</button>
                                 </form>
-                            </td>
+                            </td> -->
                         </tr>
                         @endforeach
                         

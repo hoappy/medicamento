@@ -35,53 +35,15 @@
                             <td>{{$user->coordenadas}}</td>
                             <td>{{$user->fecha_ingreso}}</td>
                             <td>{{$user->fecha_activacion}}</td>
-                            
 
-                            @can('admin.user.index')
-                                
-                                    <td>
-                                        <a class="btn btn-success btn-sm" href="{{route('admin.users.roleasig', $user)}}">Asignar Rol</a>
-                                    </td>
-                                @can('admin.user.roleasig')
-                                @endcan
-                                
-                                    <td width="10px"> 
-                                        <a class="btn btn-primary btn-sm" href="{{route('admin.users.show', $user)}}">Detalles</a>
-                                    </td>
-                                
-                                @can('admin.user.edit')
-                                    <td width="10px">
-                                        <a class="btn btn-success btn-sm" href="{{route('admin.users.edit', $user)}}">Editar</a>
-                                    </td>
-                                @endcan
-                                @can('admin.user.destroy')
-                                    <!--<td width="10px">
-                                        <form href="{{route('admin.users.destroy', $user)}}" method="POST">
-                                            @csrf
-                                            @method('delete')
-                                            <button tupe="submit" class="btn btn-danger btn-sm" >Eliminar</button>
-                                        </form>
-                                    </td>-->
-                                @endcan
-                                @can('admin.user.activar')
-                                    <!--<td width="10px">
-                                        <form href="{{route('admin.users.activar', $user)}}" method="POST">
-                                            @csrf
-                                            @method('put')
-                                            <button tupe="submit" class="btn btn-danger btn-sm" >Activar</button>
-                                        </form>
-                                    </td>-->
-                                @endcan
-                                @can('admin.user.desactivar')
-                                    <!--<td >
-                                        <form href="{{route('admin.users.desactivar', $user)}}" method="POST">
-                                            @csrf
-                                            @method('put')
-                                            <button tupe="submit" class="btn btn-primary btn-sm" >Desactivar</button>
-                                        </form>
-                                    </td>-->
-                                @endcan
-                            @endcan
+                            <!-- <td width="10px">
+                                <form href="{{route('admin.users.destroy', $user)}}" method="POST">
+                                    @csrf
+                                    {{method_field('delete')}}
+                                    <button tupe="submit" class="btn btn-danger btn-sm" >Eliminar</button>
+                                </form>
+                            </td> -->
+                               
                         </tr>
                         @endforeach
                         

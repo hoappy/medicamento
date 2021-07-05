@@ -50,6 +50,14 @@
                                 </form>
                             </td>
 
+                            <!-- <td width="10px">
+                                <form href="{{route('admin.users.destroy', $user)}}" method="POST">
+                                    @csrf
+                                    {{method_field('delete')}}
+                                    <button tupe="submit" class="btn btn-danger btn-sm" >Eliminar</button>
+                                </form>
+                            </td> -->
+
                             
                         
                         </tr>
