@@ -14,8 +14,8 @@ Route::resource('users', UserController::class)->names('admin.users');
 Route::get('users/pendientes/index', [UserController::class, 'index1'])->name('admin.users.index1');
 Route::get('users/rechazados/index', [UserController::class, 'index2'])->name('admin.users.index2');
 
-Route::get('users/{id}/aceptar', [UserController::class, 'aceptar'])->name('admin.users.aceptar');
-Route::get('users/{id}/rechazar', [UserController::class, 'rechazar'])->name('admin.users.rechazar');
+Route::put('users/{id}/aceptar', [UserController::class, 'aceptar'])->name('admin.users.aceptar');
+Route::put('users/{id}/rechazar', [UserController::class, 'rechazar'])->name('admin.users.rechazar');
 
 Route::get('users/{user}/roleasig', [UserController::class, 'roleasig'])->name('admin.users.roleasig');
 Route::put('users/{user}/rolestore', [UserController::class, 'rolestore'])->name('admin.users.rolestore');

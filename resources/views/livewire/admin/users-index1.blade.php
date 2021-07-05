@@ -36,19 +36,21 @@
                             <td>{{$user->fecha_ingreso}}</td>
                            
                             <td >
-                                <form href="{{route('admin.users.aceptar', $user)}}" method="POST">
+                                <form action="{{route('admin.users.aceptar', $user)}}" method="POST">
                                     @csrf
-                                    @method('get')
-                                    <button tupe="submit" class="btn btn-success btn-sm" >Aceptar</button>
+                                    {{method_field('put')}}
+                                    <button type="submit" class="btn btn-success btn-sm" >Aceptar</button>
                                 </form>
                             </td>
                             <td >
-                                <form href="{{route('admin.users.rechazar', $user)}}" method="POST">
+                                <form action="{{route('admin.users.rechazar', $user)}}" method="POST">
                                     @csrf
-                                    @method('get')
-                                    <button tupe="submit" class="btn btn-danger btn-sm" >Rechazar</button>
+                                    {{method_field('put')}}
+                                    <button type="submit" class="btn btn-danger btn-sm" >Rechazar</button>
                                 </form>
                             </td>
+
+                            
                         
                         </tr>
                         @endforeach

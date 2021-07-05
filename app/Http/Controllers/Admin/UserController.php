@@ -33,9 +33,9 @@ class UserController extends Controller
         //$this->middleware('can:admin.user.index')->only('index');
         //$this->middleware('can:admin.user.indexporaprobar')->only('indexporaprobar');
         //$this->middleware('can:admin.user.indexrechazado')->only('indexrechazado');
-        $this->middleware('can:admin.user.edit')->only('edit');
-        $this->middleware('can:admin.user.create')->only('create');
-        $this->middleware('can:admin.user.destroy')->only('destroy');
+        //$this->middleware('can:admin.user.edit')->only('edit');
+        //$this->middleware('can:admin.user.create')->only('create');
+        //$this->middleware('can:admin.user.destroy')->only('destroy');
         //$this->middleware('can:admin.user.aceptar')->only('aceptar');
         //$this->middleware('can:admin.user.rechazar')->only('desactivar');
         //$this->middleware('can:admin.user.rolestore')->only('rolestore');
@@ -180,7 +180,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($request->id);
         $user->estado = '2';
-        $user->fecha_activacion = Carbon::date();
+        $user->fecha_activacion = Carbon::now();
         $user->save();
         
         return redirect()->route('admin.users.index2')->with('info', 'El Useuario se rechazo correctamente');
@@ -190,11 +190,11 @@ class UserController extends Controller
     {
         $user = User::findOrFail($request->id);
         $user->estado = '1';
-        $user->fecha_activacion = Carbon::date();
+        $user->fecha_activacion = Carbon::now();
         
         $user->save();
 
-        $role = role::create();
+        $user->roles()->sync('2');
         
         return redirect()->route('admin.users.index')->with('info', 'El Useuario se acepto correctamente');
     }

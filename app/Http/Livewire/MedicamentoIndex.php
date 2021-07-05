@@ -5,6 +5,8 @@ namespace App\Http\Livewire;
 use App\Models\Medicamento;
 use Livewire\Component;
 
+
+
 use Livewire\WithPagination;
 
 class MedicamentoIndex extends Component
@@ -26,7 +28,7 @@ class MedicamentoIndex extends Component
         ->join('users', 'users.id', '=' , 'asigna_valors.user_id')
         ->where('name', 'LIKE', '%' . $this->search . '%')
         ->orWhere('nombre_medicamento', 'LIKE', '%' . $this->search . '%')
-        ->paginate();
+        ->paginate(10);
         
         return view('livewire.medicamento-index', compact('medicamentos'));
     }
