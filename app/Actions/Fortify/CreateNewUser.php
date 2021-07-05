@@ -1,0 +1,49 @@
+<?php
+
+namespace App\Actions\Fortify;
+
+use App\Models\User;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Laravel\Fortify\Contracts\CreatesNewUsers;
+use Laravel\Jetstream\Jetstream;
+
+class CreateNewUser implements CreatesNewUsers
+{
+    use PasswordValidationRules;
+
+    /**
+     * Validate and create a newly registered user.
+     *
+     * @param  array  $input
+     * @return \App\Models\User
+     */
+    public function create(array $input)
+    {
+        Validator::make($input, [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+
+            'direccion' => ['required', 'string', 'string', 'max:255'],
+            'telefono' => ['required', 'integer'],
+            'coordenadas' => ['required', 'string', 'string', 'max:255'],
+
+            'password' => $this->passwordRules(),
+            'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
+        ])->validate();
+
+        return User::create([
+            'name' => $input['name'],
+            'email' => $input['email'],
+
+            'direccion' => $input['direccion'],
+            'telefono' => $input['telefono'],
+            'coordenadas' => $input['coordenadas'],
+                        
+            'fecha_ingreso' => Carbon::now(),
+
+            'password' => Hash::make($input['password']),
+        ]);
+    }
+}
