@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        User::create([
+        $user = User::create([
             'name' => 'Rodrigo Andres Garcia Trautmann',
             'email' => 'hoappy.py@gmail.com',
             'email_verified_at' => now(),
@@ -29,6 +29,8 @@ class UserSeeder extends Seeder
             'fecha_activacion' => Carbon::now(),
             'estado' => '1',
         ]);
+
+        $user->roles()->sync('1');
 
         User::factory(20)->create();
     }

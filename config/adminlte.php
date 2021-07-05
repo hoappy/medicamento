@@ -268,7 +268,21 @@ return [
                 ],
             ],    
         ],
-        
+        [
+            'text' => 'Listado de Medicamentos',
+            'icon' => 'fas fa-archive',
+            'submenu' => [
+                [
+                'text' => 'Listado',
+                'route'  => 'admin.medicamentos.index',
+                ],
+                [
+                    'text' => 'Eliminados',
+                    'route'  => 'admin.medicamentos.index1',
+                ],
+            ], 
+
+        ],
         [
             'text'       => 'Acerca de',
             'icon_color' => 'cyan',

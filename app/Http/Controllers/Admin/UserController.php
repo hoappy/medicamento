@@ -148,7 +148,7 @@ class UserController extends Controller
         
         $user->update($request->all());
         
-        return redirect()->route('admin.users.index'/*, $automovils*/)->with('info', 'El usuario se creo correctamente');
+        return redirect()->route('admin.users.index'/*, $automovils*/)->with('info', 'El usuario se modifico correctamente');
     }
 
     /**

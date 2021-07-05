@@ -12,5 +12,6 @@ class Medicamento extends Model
     protected $fillable = [
         'nombre_medicamento',
         'descripcion_medicamento',
+        'estado',
     ];
 }

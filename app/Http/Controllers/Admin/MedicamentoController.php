@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Medicamento;
 use Illuminate\Http\Request;
 
 class MedicamentoController extends Controller
@@ -14,7 +15,12 @@ class MedicamentoController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.medicamento.index');
+    }
+
+    public function index1()
+    {
+        return view('admin.medicamento.index1');
     }
 
     /**
@@ -24,7 +30,7 @@ class MedicamentoController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.medicamento.create');
     }
 
     /**
@@ -35,7 +41,17 @@ class MedicamentoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombre_medicamento' => ['required', 'string', 'max:255', 'unique:medicamentos'],
+            'descripcion_medicamento' => ['required', 'string', 'max:255'],
+        ]);
+
+        Medicamento::create([
+            'nombre_medicamento' =>$request->nombre_medicamento,
+            'descripcion_medicamento' => $request->descripcion_medicamento,
+            
+        ]);
+        return redirect()->route('admin.medicamentos.index'/*, $automovils*/)->with('info', 'El medicamento se creo correctamente');
     }
 
     /**
@@ -46,7 +62,7 @@ class MedicamentoController extends Controller
      */
     public function show($id)
     {
-        //
+    return view('admin.medicamento.show'/*, compact('medicamentos')*/);
     }
 
     /**
@@ -55,9 +71,9 @@ class MedicamentoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Medicamento $medicamento)
     {
-        //
+        return view('admin.medicamento.edit', compact('medicamento'));
     }
 
     /**
@@ -67,9 +83,17 @@ class MedicamentoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Medicamento $medicamento)
     {
-        //
+        $request->validate([
+            'nombre_medicamento' => ['required', 'string', 'max:255', "unique:users,email,$medicamento->id"],
+            'descripcion_medicamento' => ['required', 'string', 'max:255'],
+        ]);
+
+        $medicamento->update($request->all());
+
+        return redirect()->route('admin.medicamentos.index'/*, $automovils*/)->with('info', 'El medicamento se modifico correctamente');
+    
     }
 
     /**
@@ -78,8 +102,30 @@ class MedicamentoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy( Medicamento $medicamento )
     {
-        //
+        $medicamento->delete();
+
+        return redirect()->route('admin.medicamentos.index'/*, $automovils*/)->with('info', 'El usuario elimino correctamente');
+    
     }
+
+    public function restaurar(Request $request)
+    {
+        $medicamento = Medicamento::findOrFail($request->id);
+        $medicamento->estado = '1';
+        $medicamento->save();
+        
+        return redirect()->route('admin.medicamentos.index1')->with('info', 'El Medicamento de Restauro correctamente');
+    }
+
+    public function eliminar(Request $request)
+    {
+        $medicamento = Medicamento::findOrFail($request->id);
+        $medicamento->estado = '0';
+        $medicamento->save();
+        
+        return redirect()->route('admin.medicamentos.index')->with('info', 'El medicamento se elimino correctamente');
+    }
+
 }
