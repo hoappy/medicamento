@@ -28,7 +28,8 @@ class MedicamentosIndex extends Component
         
         ->where('medicamentos.nombre_medicamento', 'LIKE', '%' . $this->search . '%')
         
-        ->select('medicamentos.id as id', 'medicamentos.nombre_medicamento as nombre_medicamento','medicamentos.descripcion_medicamento as descripcion_medicamento', 'users.name as name', 'cargas.fecha_carga as fecha_carga')
+        ->select('medicamentos.id as id', 'medicamentos.nombre_medicamento as nombre_medicamento',
+            'medicamentos.descripcion_medicamento as descripcion_medicamento', 'users.name as name', 'cargas.fecha_carga as fecha_carga')
 
         ->paginate(10);
 

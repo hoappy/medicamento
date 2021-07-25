@@ -7,8 +7,8 @@ use App\Http\Controllers\Admin\UserController;
 
 Route::get('', [HomeController::class, 'index'])->name('admin.home');
 
-//restringir ruta mediante middkeware Route::resource('users', UserController::class)->middleware('can:admin.user.index')->names('admin.users');
-//generacion rutas del curd excepto show Route::resource('users', UserController::class)->except('show')->names('admin.users');
+//ejemplo restringir ruta mediante middkeware Route::resource('users', UserController::class)->middleware('can:admin.user.index')->names('admin.users');
+//ejemplo generacion rutas del curd excepto show Route::resource('users', UserController::class)->except('show')->names('admin.users');
 
 Route::resource('users', UserController::class)->names('admin.users');
 Route::get('users/pendientes/index', [UserController::class, 'index1'])->name('admin.users.index1');

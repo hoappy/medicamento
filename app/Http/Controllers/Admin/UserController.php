@@ -39,7 +39,7 @@ class UserController extends Controller
         //$this->middleware('can:admin.user.aceptar')->only('aceptar');
         //$this->middleware('can:admin.user.rechazar')->only('desactivar');
         //$this->middleware('can:admin.user.rolestore')->only('rolestore');
-        //$this->middleware('can:admin.user.roleasig')->only('roleasig');
+        //$this->middleware('can:admin.user.roleasig')->only('roleasig');S
 
     }
 

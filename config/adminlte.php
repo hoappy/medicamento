@@ -257,6 +257,7 @@ return [
                 [
                 'text' => 'Aprobados',
                 'route'  => 'admin.users.index',
+                'can' => 'admin.home',
                 ],
                 [
                     'text' => 'Por Aprobar',
