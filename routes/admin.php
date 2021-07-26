@@ -23,4 +23,5 @@ Route::resource('medicamentos', MedicamentoController::class)->names('admin.medi
 Route::put('medicamentos/{id}/restaurar', [MedicamentoController::class, 'restaurar'])->name('admin.medicamentos.restaurar');
 Route::put('medicamentos/{id}/eliminar', [MedicamentoController::class, 'eliminar'])->name('admin.medicamentos.eliminar');
 Route::get('medicamentos/eliminados/index', [MedicamentoController::class, 'index1'])->name('admin.medicamentos.index1');
+Route::get('medicamentos/farmacia/index', [MedicamentoController::class, 'index2'])->name('admin.medicamentos.index2');
 

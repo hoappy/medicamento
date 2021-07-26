@@ -253,11 +253,11 @@ return [
         [
             'text' => 'Listado de Usuarios',
             'icon' => 'fas fa-archive',
+            'can' => 'admin.admin',
             'submenu' => [
                 [
                 'text' => 'Aprobados',
                 'route'  => 'admin.users.index',
-                'can' => 'admin.home',
                 ],
                 [
                     'text' => 'Por Aprobar',
@@ -272,6 +272,7 @@ return [
         [
             'text' => 'Listado de Medicamentos',
             'icon' => 'fas fa-archive',
+            'can' => 'admin.admin',
             'submenu' => [
                 [
                 'text' => 'Listado',
@@ -283,6 +284,12 @@ return [
                 ],
             ], 
 
+        ],
+        [
+            'text' => 'Listado de Medicamentos',
+            'icon' => 'fas fa-archive',
+            'route'  => 'admin.medicamentos.index2',
+            'can' => 'admin.farmacia',
         ],
         [
             'text'       => 'Acerca de',

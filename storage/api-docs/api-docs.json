@@ -1,0 +1,55 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Your super  ApplicationAPI",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/medicamentos": {
+            "get": {
+                "tags": [
+                    "Medicamentos"
+                ],
+                "summary": "Get lista de Medicamentos",
+                "description": "Retorno lista de Medicamentos",
+                "operationId": "getMeedicamentoList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/api/users": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get lista de Usuarios / Farmacias",
+                "description": "Retorno lista de Farmacias",
+                "operationId": "getUsersList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "responses": {
+            "401": {
+                "description": "Unauthenticated"
+            },
+            "404": {
+                "description": "Pagina no Encontrada"
+            },
+            "403": {
+                "description": "Forbidden"
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}
