@@ -11,9 +11,9 @@
                             
                             <th scope="col">Nombre Medicamento</th>
                             <th scope="col">Descripcion Medicamento</th>
-                            <th scope="col">Cantidad:</th>
-                            <th scope="col">Valor:</th>
-                            <th scope="col">Asignado el:</th>
+                            <th scope="col">Eliminado el:</th>
+                            <th scope="col">Por el Usuario:</th>
+                            
                         </tr>
                         </thead>
                         <tbody class="text-center">
@@ -21,14 +21,16 @@
                         <tr>
                             <td>{{$medicamento->nombre_medicamento}}</td>
                             <td>{{$medicamento->descripcion_medicamento}}</td>
-                            <td>{{$medicamento->cantidad}}</td>
-                            <td>{{$medicamento->valor}}</td>
-                            <td>{{$medicamento->fecha_asigna}}</td>
+                            <td>{{$medicamento->fecha_carga}}</td>
+                            <td>{{$medicamento->name}}</td>
                             
-                            <!--<td width="10px">
-                                <a class="btn btn-success btn-sm" href="{{route('admin.medicamentos.edit', $medicamento)}}">Editar</a>
-                            </td>-->
-                           
+                            <td >
+                                <form action="{{route('admin.medicamentos.restaurar', $medicamento)}}" method="POST">
+                                    @csrf
+                                    {{method_field('put')}}
+                                    <button type="submit" class=btn btn-success btn-sm" >Restaurar</button>
+                                </form>
+                            </td>
                         </tr>
                         @endforeach
                         
@@ -47,4 +49,5 @@
         </div>
     </div>
 </div>
+
 

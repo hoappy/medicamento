@@ -11,9 +11,7 @@
                             
                             <th scope="col">Nombre Medicamento</th>
                             <th scope="col">Descripcion Medicamento</th>
-                            <th scope="col">Cantidad:</th>
-                            <th scope="col">Valor:</th>
-                            <th scope="col">Asignado el:</th>
+                            
                         </tr>
                         </thead>
                         <tbody class="text-center">
@@ -21,14 +19,20 @@
                         <tr>
                             <td>{{$medicamento->nombre_medicamento}}</td>
                             <td>{{$medicamento->descripcion_medicamento}}</td>
-                            <td>{{$medicamento->cantidad}}</td>
-                            <td>{{$medicamento->valor}}</td>
-                            <td>{{$medicamento->fecha_asigna}}</td>
+                            
                             
                             <!--<td width="10px">
                                 <a class="btn btn-success btn-sm" href="{{route('admin.medicamentos.edit', $medicamento)}}">Editar</a>
                             </td>-->
-                           
+                            @if ($medicamento->estado === '0')
+                                <td >
+                                    <form action="{{route('admin.medicamentos.asignarvalor', $medicamento)}}" method="POST">
+                                        @csrf
+                                        {{method_field('put')}}
+                                        <button type="submit" class="btn btn-success btn-sm" >Asignar Valor y Cantidad</button>
+                                    </form>
+                                </td>
+                            @endif
                         </tr>
                         @endforeach
                         

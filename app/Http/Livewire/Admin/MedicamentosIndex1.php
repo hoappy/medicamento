@@ -21,13 +21,18 @@ class MedicamentosIndex1 extends Component
 
     public function render()
     {
-        $medicamentos = Medicamento::join('cargas', 'medicamentos.id', '=' , 'cargas.medicamento_id')
-        ->join('users', 'users.id', '=' , 'cargas.user_id')
-        ->Where('medicamentos.estado', '=', '0')
+        $user = auth()->user();
+
+        $medicamentos = Medicamento::crossJoin('asigna_valors', 'medicamentos.id', '=' , 'asigna_valors.medicamento_id')
+        ->crossJoin('users', 'users.id', '=' , 'asigna_valors.user_id')
+        //->Where('medicamentos.estado', '=', '0')
 
         ->where('medicamentos.nombre_medicamento', 'LIKE', '%' . $this->search . '%')
+        ->where('users.id', '=', $user->id)
         
-        ->select('medicamentos.id as id', 'medicamentos.nombre_medicamento as nombre_medicamento','medicamentos.descripcion_medicamento as descripcion_medicamento', 'users.name as name', 'cargas.fecha_carga as fecha_carga')
+        ->select('medicamentos.id as id', 'medicamentos.nombre_medicamento as nombre_medicamento',
+                'medicamentos.descripcion_medicamento as descripcion_medicamento', 'asigna_valors.valor as valor', 
+                'asigna_valors.fecha_asigna as fecha_asigna', 'asigna_valors.cantidad as cantidad', 'medicamentos.estado as estado')
         ->paginate(10);
 
         return view('livewire.admin.medicamentos-index1', compact('medicamentos'));

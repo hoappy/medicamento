@@ -26,7 +26,7 @@ class Asigna_valorFactory extends Factory
     {
         return [
             'user_id' => User::all()->random()->id,
-            'medicamento_id' => Medicamento::all()->random()->id,
+            'medicamento_id' => Medicamento::all()->where('estado', '=', '1')->random()->id,
             'valor' => $this->faker->randomNumber(),
             'fecha_asigna' => Carbon::now(),
             'cantidad' => $this->faker->randomNumber(),

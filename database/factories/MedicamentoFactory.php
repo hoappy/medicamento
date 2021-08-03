@@ -26,7 +26,8 @@ class MedicamentoFactory extends Factory
         return [
             'nombre_medicamento' => $this->faker->unique()->word(50),
             'descripcion_medicamento' => $this->faker->word(50),
-            'estado' => $this->faker->randomElement(['0','1']),
+            'estado' => $this->faker->randomElement(['1']),
+            'estadoo' => $this->faker->randomElement(['0','1']),
         ];
     }
 }

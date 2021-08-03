@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Asigna_valor;
 use App\Models\Carga;
 use App\Models\Medicamento;
 use Carbon\Carbon;
@@ -22,7 +23,16 @@ class MedicamentoController extends Controller
 
     public function index1()
     {
+        return view('admin.medicamento.index3');
+    }
+
+    public function index2()
+    {
         return view('admin.medicamento.index1');
+    }
+    public function index3()
+    {
+        return view('admin.medicamento.index2');
     }
 
     /**
@@ -51,6 +61,7 @@ class MedicamentoController extends Controller
         $medicamento = Medicamento::create([
             'nombre_medicamento' =>$request->nombre_medicamento,
             'descripcion_medicamento' => $request->descripcion_medicamento,
+            'estado' => '0',
             
         ]);
 
@@ -125,7 +136,7 @@ class MedicamentoController extends Controller
     public function restaurar(Request $request)
     {
         $medicamento = Medicamento::findOrFail($request->id);
-        $medicamento->estado = '1';
+        $medicamento->estadoo = '1';
         $medicamento->save();
         
         return redirect()->route('admin.medicamentos.index1')->with('info', 'El Medicamento de Restauro correctamente');
@@ -134,10 +145,41 @@ class MedicamentoController extends Controller
     public function eliminar(Request $request)
     {
         $medicamento = Medicamento::findOrFail($request->id);
-        $medicamento->estado = '0';
+        $medicamento->estadoo = '0';
         $medicamento->save();
         
         return redirect()->route('admin.medicamentos.index')->with('info', 'El medicamento se elimino correctamente');
+    }
+
+    public function asignarvalor(Request $request)
+    {
+        $medicamento = Medicamento::findOrFail($request->id);
+
+        return view('admin.medicamento.asigna', compact('medicamento'));
+    }
+
+    public function asignarvalorstore(Request $request)
+    {
+        $user = auth()->user();
+
+        $request->validate([
+            'valor' => ['required', 'integer'],
+            'cantidad' => ['required', 'integer'],
+        ]);
+
+        $medicamento = Medicamento::findOrFail($request->id);
+        $medicamento->estado = '1';
+        $medicamento->save();
+
+        $asignavalor = Asigna_valor::create([
+            'user_id' =>$user->id,
+            'medicamento_id' => $request->id,
+            'fecha_asigna' => Carbon::now(),
+            'valor' => $request->valor,
+            'cantidad' => $request->cantidad,
+        ]);
+        
+        return redirect()->route('admin.medicamentos.index2')->with('info', 'El asigno el valor y la cantidad al medicamento correctamente');
     }
 
 }

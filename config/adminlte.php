@@ -288,9 +288,20 @@ return [
         [
             'text' => 'Listado de Medicamentos',
             'icon' => 'fas fa-archive',
-            'route'  => 'admin.medicamentos.index2',
             'can' => 'admin.farmacia',
+            'submenu' => [
+                [
+                'text' => 'Listado ya Asignado',
+                'route'  => 'admin.medicamentos.index2',
+                ],
+                [
+                    'text' => 'Listado por Asignar',
+                    'route'  => 'admin.medicamentos.index3',
+                ],
+            ], 
+
         ],
+
         [
             'text'       => 'Acerca de',
             'icon_color' => 'cyan',

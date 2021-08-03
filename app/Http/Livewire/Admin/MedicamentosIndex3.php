@@ -7,7 +7,7 @@ use Livewire\Component;
 
 use Livewire\WithPagination;
 
-class MedicamentosIndex extends Component
+class MedicamentosIndex3 extends Component
 {
     use WithPagination;
 
@@ -24,7 +24,7 @@ class MedicamentosIndex extends Component
         $medicamentos = Medicamento::
         join('cargas', 'medicamentos.id', '=' , 'cargas.medicamento_id')
         ->join('users', 'users.id', '=' , 'cargas.user_id')
-        ->Where('medicamentos.estadoo', '=', '1')
+        ->Where('medicamentos.estadoo', '=', '0')
         
         ->where('medicamentos.nombre_medicamento', 'LIKE', '%' . $this->search . '%')
         
@@ -33,6 +33,6 @@ class MedicamentosIndex extends Component
 
         ->paginate(10);
 
-        return view('livewire.admin.medicamentos-index', compact('medicamentos'));
+        return view('livewire.admin.medicamentos-index3', compact('medicamentos'));
     }
 }

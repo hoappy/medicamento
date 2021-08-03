@@ -24,4 +24,7 @@ Route::put('medicamentos/{id}/restaurar', [MedicamentoController::class, 'restau
 Route::put('medicamentos/{id}/eliminar', [MedicamentoController::class, 'eliminar'])->name('admin.medicamentos.eliminar');
 Route::get('medicamentos/eliminados/index', [MedicamentoController::class, 'index1'])->name('admin.medicamentos.index1');
 Route::get('medicamentos/farmacia/index', [MedicamentoController::class, 'index2'])->name('admin.medicamentos.index2');
+Route::get('medicamentos/farmacia/index2', [MedicamentoController::class, 'index3'])->name('admin.medicamentos.index3');
 
+Route::put('medicamentos/{id}/asignarvalor', [MedicamentoController::class, 'asignarvalor'])->name('admin.medicamentos.asignarvalor');
+Route::put('medicamentos/{id}/asignarvalorstore', [MedicamentoController::class, 'asignarvalorstore'])->name('admin.medicamentos.asignarvalorstore');

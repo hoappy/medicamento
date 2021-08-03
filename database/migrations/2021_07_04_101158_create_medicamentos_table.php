@@ -19,7 +19,8 @@ class CreateMedicamentosTable extends Migration
             $table->string('nombre_medicamento');
             $table->string('descripcion_medicamento');
 
-            $table->enum('estado',[0, 1])->default(1);
+            $table->enum('estado',[0, 1])->default(0);
+            $table->enum('estadoo',[0, 1])->default(1);
 
             $table->timestamps();
         });
