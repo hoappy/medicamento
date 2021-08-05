@@ -28,7 +28,7 @@
                                 <form action="{{route('admin.medicamentos.restaurar', $medicamento)}}" method="POST">
                                     @csrf
                                     {{method_field('put')}}
-                                    <button type="submit" class=btn btn-success btn-sm" >Restaurar</button>
+                                    <button type="submit" class="btn btn-success btn-sm" >Restaurar</button>
                                 </form>
                             </td>
                         </tr>

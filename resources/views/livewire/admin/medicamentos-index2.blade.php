@@ -24,7 +24,7 @@
                             <!--<td width="10px">
                                 <a class="btn btn-success btn-sm" href="{{route('admin.medicamentos.edit', $medicamento)}}">Editar</a>
                             </td>-->
-                            @if ($medicamento->estado === '0')
+                            
                                 <td >
                                     <form action="{{route('admin.medicamentos.asignarvalor', $medicamento)}}" method="POST">
                                         @csrf
@@ -32,7 +32,7 @@
                                         <button type="submit" class="btn btn-success btn-sm" >Asignar Valor y Cantidad</button>
                                     </form>
                                 </td>
-                            @endif
+                            
                         </tr>
                         @endforeach
                         

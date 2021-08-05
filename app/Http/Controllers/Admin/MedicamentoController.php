@@ -61,6 +61,7 @@ class MedicamentoController extends Controller
         $medicamento = Medicamento::create([
             'nombre_medicamento' =>$request->nombre_medicamento,
             'descripcion_medicamento' => $request->descripcion_medicamento,
+            'estadoo' => '0',
             'estado' => '0',
             
         ]);

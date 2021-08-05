@@ -13,7 +13,7 @@ class MedicamentoController extends Controller
 {
     /**
      * @OA\Get(
-     *      path="/api/medicamentos",
+     *      path="/rodrigogarcia1601/public/api/medicamentos",
      *      operationId="getMeedicamentoList",
      *      tags={"Medicamentos"},
      *      summary="Get lista de Medicamentos",

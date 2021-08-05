@@ -5,7 +5,7 @@
         "version": "1.0.0"
     },
     "paths": {
-        "/api/medicamentos": {
+        "/rodrigogarcia1601/public/api/medicamentos": {
             "get": {
                 "tags": [
                     "Medicamentos"
@@ -20,7 +20,7 @@
                 }
             }
         },
-        "/api/users": {
+        "/rodrigogarcia1601/public/api/users": {
             "get": {
                 "tags": [
                     "Users"
@@ -30,7 +30,7 @@
                 "operationId": "getUsersList",
                 "responses": {
                     "200": {
-                        "description": "Successful operation"
+                        "description": "Operacion Satisfactoria"
                     }
                 }
             }

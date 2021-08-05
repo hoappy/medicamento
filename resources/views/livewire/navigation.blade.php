@@ -33,14 +33,14 @@
     <!-- menu izquierdo y logotipo -->
       <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
         <!-- logotipo -->
-        <a href="/" class="flex-shrink-0 flex items-center">
-          <pre class="text-white"><strong> Busqueda de Medicamentos</strong></pre></img>
+        <a href="/rodrigogarcia1601/public" class="flex-shrink-0 flex items-center">
+          <pre class="text-white"><h4><strong> Búsqueda de Medicamentos</strong></h4></pre>
         </a>
         <!-- menu superior izquierdo-->
         <div class="hidden sm:block sm:ml-6">
           <div class="flex space-x-4">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a href="/api/documentation" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">API</a>
+            <a href="/rodrigogarcia1601/public/api/documentation" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">API</a>
             <!--<a href="/dashboard" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">dashboard</a>
             <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Projects</a>
             <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Calendar</a>-->
@@ -126,10 +126,14 @@
   <div class="sm:hidden" id="mobile-menu" x-show="open" x-on:click.away="open = false">
     <div class="px-2 pt-2 pb-3 space-y-1">
       <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-      <a href="/api/documentation" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">API</a>
+      <a href="/rodrigogarcia1601/public/api/documentation" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">API</a>
       <!-- <a href="/admin" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">dashboard</a> -->
       <!--<a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Projects</a>
       <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Calendar</a>-->
     </div>
   </div>
+  <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
+  <!-- Scripts -->
+  <script src="{{ asset('js/app.js') }}" defer></script>
 </nav>
